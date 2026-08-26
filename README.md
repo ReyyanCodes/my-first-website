@@ -12,7 +12,7 @@ My first website made with HTML and CSS
     <input type="text" id="name" name="name"><br><br>
 
     <label for="email">Email:</label>
-    <input type="email" id="email" name="email"><br><br>
+    <input type="email" id="learningofwavesbyreyan@gmail.com" name="email"><br><br>
 
     <input type="submit" value="Send">
   </form>
