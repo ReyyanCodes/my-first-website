@@ -1,540 +1,235 @@
  <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>ZT Ultra 2 - Online Store</title>
+<title>Fit Hub</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
 
-        body {
-            background: #f4f6f8;
-            color: #222;
-        }
+body {
+    background: #f4f7f6;
+    color: #222;
+}
 
-        /* Header */
-        header {
-            background: #111827;
-            color: white;
-            padding: 18px 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+header {
+    background: #111;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
 
-        header h1 {
-            font-size: 25px;
-        }
+header h1 {
+    font-size: 35px;
+}
 
-        header span {
-            color: #38bdf8;
-        }
+header p {
+    margin-top: 8px;
+    color: #ccc;
+}
 
-        /* Product */
-        .container {
-            max-width: 1000px;
-            margin: 50px auto;
-            padding: 20px;
-        }
+.hero {
+    padding: 60px 20px;
+    text-align: center;
+    background: linear-gradient(135deg, #111, #333);
+    color: white;
+}
 
-        .product {
-            background: white;
-            border-radius: 18px;
-            padding: 30px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
-        }
+.hero h2 {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
 
-        /* Image */
-        .product-image {
-            text-align: center;
-        }
+.hero p {
+    font-size: 18px;
+    margin-bottom: 25px;
+}
 
-        .product-image img {
-            width: 100%;
-            max-width: 420px;
-            height: 420px;
-            object-fit: contain;
-            border-radius: 15px;
-            background: #f1f5f9;
-        }
+.btn {
+    display: inline-block;
+    background: #00c853;
+    color: white;
+    padding: 14px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+}
 
-        .upload-label {
-            display: inline-block;
-            margin-top: 15px;
-            background: #e5e7eb;
-            padding: 10px 15px;
-            border-radius: 8px;
-            cursor: pointer;
-        }
+.container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 40px 20px;
+}
 
-        #imageUpload {
-            display: none;
-        }
+.section-title {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 30px;
+}
 
-        /* Details */
-        .details h2 {
-            font-size: 36px;
-            margin-bottom: 10px;
-        }
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
 
-        .rating {
-            color: #f59e0b;
-            margin-bottom: 20px;
-        }
+.card {
+    background: white;
+    padding: 25px;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
 
-        .price {
-            font-size: 30px;
-            font-weight: bold;
-            color: #16a34a;
-            margin: 20px 0;
-        }
+.card .icon {
+    font-size: 45px;
+    margin-bottom: 15px;
+}
 
-        .description {
-            color: #555;
-            line-height: 1.6;
-            margin-bottom: 25px;
-        }
+.card h3 {
+    margin-bottom: 10px;
+}
 
-        /* Colors */
-        .option-title {
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
+.card p {
+    color: #666;
+    line-height: 1.5;
+}
 
-        .colors {
-            display: flex;
-            gap: 12px;
-            margin-bottom: 25px;
-        }
+.workout {
+    margin-top: 50px;
+}
 
-        .color {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            border: 3px solid white;
-            box-shadow: 0 0 0 1px #aaa;
-            cursor: pointer;
-        }
+.workout-box {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+}
 
-        .color.selected {
-            box-shadow: 0 0 0 3px #2563eb;
-        }
+.workout-box h3 {
+    color: #00a844;
+    margin-bottom: 8px;
+}
 
-        .black {
-            background: black;
-        }
+footer {
+    background: #111;
+    color: white;
+    text-align: center;
+    padding: 25px;
+    margin-top: 40px;
+}
 
-        .silver {
-            background: silver;
-        }
+@media(max-width: 700px) {
+    .cards {
+        grid-template-columns: 1fr;
+    }
 
-        .blue {
-            background: #2563eb;
-        }
-
-        .gold {
-            background: #eab308;
-        }
-
-        /* Quantity */
-        .quantity {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 25px;
-        }
-
-        .quantity button {
-            width: 35px;
-            height: 35px;
-            border: none;
-            background: #e5e7eb;
-            font-size: 20px;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-
-        #quantity {
-            font-size: 18px;
-            font-weight: bold;
-        }
-
-        /* Buy Button */
-        .buy-btn {
-            width: 100%;
-            padding: 16px;
-            border: none;
-            border-radius: 10px;
-            background: #2563eb;
-            color: white;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .buy-btn:hover {
-            background: #1d4ed8;
-            transform: translateY(-2px);
-        }
-
-        /* Payment Box */
-        .payment {
-            display: none;
-            margin-top: 25px;
-            padding: 20px;
-            border-radius: 12px;
-            background: #ecfdf5;
-            border: 1px solid #86efac;
-        }
-
-        .payment h3 {
-            margin-bottom: 12px;
-            color: #15803d;
-        }
-
-        .easypaisa {
-            font-size: 20px;
-            font-weight: bold;
-            margin: 10px 0;
-        }
-
-        .payment input {
-            width: 100%;
-            padding: 12px;
-            margin-top: 10px;
-            border: 1px solid #ccc;
-            border-radius: 7px;
-        }
-
-        .confirm-btn {
-            margin-top: 12px;
-            width: 100%;
-            padding: 12px;
-            border: none;
-            border-radius: 7px;
-            background: #16a34a;
-            color: white;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 25px;
-            background: #111827;
-            color: white;
-            margin-top: 50px;
-        }
-
-        /* Mobile */
-        @media (max-width: 750px) {
-            .product {
-                grid-template-columns: 1fr;
-            }
-
-            .details h2 {
-                font-size: 28px;
-            }
-
-            .product-image img {
-                height: 300px;
-            }
-        }
-    </style>
+    .hero h2 {
+        font-size: 30px;
+    }
+}
+</style>
 </head>
 
 <body>
 
-    <header>
-        <h1>ZT <span>STORE</span></h1>
-        <p>Online Shopping</p>
-    </header>
+<header>
+    <h1>💪 FIT HUB</h1>
+    <p>Your Fitness Journey Starts Here</p>
+</header>
 
-    <div class="container">
+<section class="hero">
+    <h2>Build a Stronger You</h2>
+    <p>Train smart. Stay healthy. Become your best version.</p>
 
-        <div class="product">
+    <a href="#workouts" class="btn">Explore Workouts</a>
+</section>
 
-            <!-- Product Image -->
-            <div class="product-image">
+<div class="container">
 
-                <!-- Change this image URL to your own product picture -->
-                <img
-                    id="productImage"
-                    src="https://via.placeholder.com/500x500.png?text=ZT+Ultra+2"
-                    alt="ZT Ultra 2"
-                >
+    <h2 class="section-title">What We Offer</h2>
 
-                <label class="upload-label">
-                    📷 Choose Product Picture
-                    <input type="file" id="imageUpload" accept="image/*">
-                </label>
+    <div class="cards">
 
-            </div>
+        <div class="card">
+            <div class="icon">🏋️</div>
+            <h3>Strength Training</h3>
+            <p>
+                Improve your strength with simple and effective
+                exercises.
+            </p>
+        </div>
 
+        <div class="card">
+            <div class="icon">🏃</div>
+            <h3>Cardio</h3>
+            <p>
+                Improve your fitness with running, walking and
+                other healthy activities.
+            </p>
+        </div>
 
-            <!-- Product Details -->
-            <div class="details">
-
-                <h2>ZT Ultra 2</h2>
-
-                <div class="rating">
-                    ★★★★★ <span style="color:#555;">4.8/5</span>
-                </div>
-
-                <div class="price">
-                    Rs. 1,500
-                </div>
-
-                <p class="description">
-                    Experience the ZT Ultra 2 with a stylish design
-                    and modern look. Choose your favorite color and
-                    place your order easily.
-                </p>
-
-
-                <!-- Colors -->
-                <p class="option-title">Choose Color:</p>
-
-                <div class="colors">
-
-                    <div
-                        class="color black selected"
-                        data-color="Black"
-                        title="Black">
-                    </div>
-
-                    <div
-                        class="color silver"
-                        data-color="Silver"
-                        title="Silver">
-                    </div>
-
-                    <div
-                        class="color blue"
-                        data-color="Blue"
-                        title="Blue">
-                    </div>
-
-                    <div
-                        class="color gold"
-                        data-color="Gold"
-                        title="Gold">
-                    </div>
-
-                </div>
-
-                <p>
-                    Selected Color:
-                    <strong id="selectedColor">Black</strong>
-                </p>
-
-                <br>
-
-
-                <!-- Quantity -->
-                <p class="option-title">Quantity:</p>
-
-                <div class="quantity">
-
-                    <button onclick="changeQuantity(-1)">
-                        −
-                    </button>
-
-                    <span id="quantity">1</span>
-
-                    <button onclick="changeQuantity(1)">
-                        +
-                    </button>
-
-                </div>
-
-
-                <!-- Buy Button -->
-                <button class="buy-btn" onclick="showPayment()">
-                    🛒 Buy Now
-                </button>
-
-
-                <!-- Payment -->
-                <div class="payment" id="paymentBox">
-
-                    <h3>💳 EasyPaisa Payment</h3>
-
-                    <p>
-                        Send your payment to:
-                    </p>
-
-                    <div class="easypaisa">
-                        📱 03339059199
-                    </div>
-
-                    <p>
-                        Total Amount:
-                        <strong id="totalPrice">Rs. 1,500</strong>
-                    </p>
-
-                    <p>
-                        After sending the payment, enter your
-                        name and contact number below.
-                    </p>
-
-                    <input
-                        type="text"
-                        id="customerName"
-                        placeholder="Your Name"
-                    >
-
-                    <input
-                        type="text"
-                        id="customerPhone"
-                        placeholder="Your Phone Number"
-                    >
-
-                    <button
-                        class="confirm-btn"
-                        onclick="confirmOrder()">
-                        Confirm Order
-                    </button>
-
-                </div>
-
-            </div>
-
+        <div class="card">
+            <div class="icon">🥗</div>
+            <h3>Healthy Lifestyle</h3>
+            <p>
+                Learn healthy habits and make better everyday
+                choices.
+            </p>
         </div>
 
     </div>
 
 
-    <footer>
-        © 2026 ZT Store | All Rights Reserved
-    </footer>
+    <section class="workout" id="workouts">
 
+        <h2 class="section-title">Workout Ideas</h2>
 
-    <script>
+        <div class="workout-box">
+            <h3>🏃 Beginner Workout</h3>
+            <p>
+                Walking, light jogging, stretching and basic
+                bodyweight exercises.
+            </p>
+        </div>
 
-        /* Quantity */
-        let quantity = 1;
+        <div class="workout-box">
+            <h3>💪 Strength Workout</h3>
+            <p>
+                Squats, push-ups, lunges and other safe
+                bodyweight exercises.
+            </p>
+        </div>
 
-        function changeQuantity(amount) {
+        <div class="workout-box">
+            <h3>🧘 Flexibility</h3>
+            <p>
+                Gentle stretching and mobility exercises to
+                improve movement.
+            </p>
+        </div>
 
-            quantity += amount;
+    </section>
 
-            if (quantity < 1) {
-                quantity = 1;
-            }
+</div>
 
-            document.getElementById("quantity").innerText = quantity;
+<footer>
+    <p>© 2026 Fit Hub | Stay Active • Stay Healthy</p>
+</footer>
 
-            updatePrice();
-        }
-
-
-        /* Update price */
-        function updatePrice() {
-
-            let price = 1500;
-
-            let total = price * quantity;
-
-            document.getElementById("totalPrice").innerText =
-                "Rs. " + total.toLocaleString();
-        }
-
-
-        /* Color selection */
-        const colors = document.querySelectorAll(".color");
-
-        colors.forEach(function(color) {
-
-            color.addEventListener("click", function() {
-
-                colors.forEach(function(item) {
-                    item.classList.remove("selected");
-                });
-
-                this.classList.add("selected");
-
-                document.getElementById("selectedColor").innerText =
-                    this.dataset.color;
-
-            });
-
-        });
-
-
-        /* Upload product picture */
-        document.getElementById("imageUpload")
-        .addEventListener("change", function(event) {
-
-            const file = event.target.files[0];
-
-            if (file) {
-
-                const imageURL = URL.createObjectURL(file);
-
-                document.getElementById("productImage").src =
-                    imageURL;
-            }
-
-        });
-
-
-        /* Show payment */
-        function showPayment() {
-
-            document.getElementById("paymentBox").style.display =
-                "block";
-
-            document.getElementById("paymentBox")
-                .scrollIntoView({
-                    behavior: "smooth"
-                });
-        }
-
-
-        /* Confirm order */
-        function confirmOrder() {
-
-            const name =
-                document.getElementById("customerName").value;
-
-            const phone =
-                document.getElementById("customerPhone").value;
-
-            const color =
-                document.getElementById("selectedColor").innerText;
-
-            if (name === "" || phone === "") {
-
-                alert("Please enter your name and phone number.");
-
-                return;
-            }
-
-            alert(
-                "Order details:\n\n" +
-                "Product: ZT Ultra 2\n" +
-                "Color: " + color + "\n" +
-                "Quantity: " + quantity + "\n" +
-                "Total: Rs. " + (1500 * quantity) +
-                "\n\nThank you, " + name + "!"
-            );
-
-        }
-
-    </script>
+<script>
+document.querySelector(".btn").addEventListener("click", function() {
+    alert("Welcome to Fit Hub! 💪");
+});
+</script>
 
 </body>
 </html>
